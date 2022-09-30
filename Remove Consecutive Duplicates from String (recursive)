@@ -1,0 +1,24 @@
+
+public class Solution {
+    public static String rec(String s, int start){
+        if(start+1==s.length())
+            return s.charAt(start)+"";
+        if(s.charAt(start)!=s.charAt(start+1))
+            return s.charAt(start)+rec(s,start+1);
+        else return rec(s,start+1);
+    }
+	public static String removeConsecutiveDuplicates(String s) {
+        
+		// O(n) time solution 
+//         for(int i=0;i<s.length();i++){
+//             if(i==s.length()-1){
+//                 fStr+=s.charAt(i); break;}
+//             if(!(s.charAt(i)==s.charAt(i+1)))
+//                fStr+=s.charAt(i); 
+//             else continue;  } 
+//         return fStr;
+              
+            return rec(s,0);
+	}
+   
+}
