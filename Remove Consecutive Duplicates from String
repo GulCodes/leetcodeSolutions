@@ -1,0 +1,16 @@
+public class Solution {
+	public static String removeConsecutiveDuplicates(String s) {
+        String fStr="";
+		// O(n) solution 
+        for(int i=0;i<s.length();i++){
+            if(i==s.length()-1){
+                fStr+=s.charAt(i); break;}
+            if(!(s.charAt(i)==s.charAt(i+1)))
+               fStr+=s.charAt(i); 
+            else continue;  } 
+        return fStr;
+                
+        
+	}
+
+}
