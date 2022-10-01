@@ -1,0 +1,20 @@
+
+public class solution {
+
+	public static boolean isStringPalindrome(String input) {
+		// Write your code here
+        int start=0; int end=input.length()-1;
+        return func(input, start, end);
+	}
+    
+    static boolean func(String input,int start,int end){
+        if(start>=end){
+            return true;
+        }
+         if(input.length()==0||input.length()==1)
+          return true;
+      else if(input.charAt(start)!=input.charAt(end))
+          return false;
+        else return func(input,start+1,end-1);
+    }
+}
