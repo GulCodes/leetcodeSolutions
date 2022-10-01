@@ -1,0 +1,43 @@
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        /* Using HashMap. Not recommended since its not in-place & takes auxillary memory of O(n).
+        if (nums.length==0) return 0;
+        if (nums.length==1)
+        { if(nums[0]==val) return 0;
+        else return 1;
+        }
+        HashMap<Integer,Integer> map= new HashMap<>();
+        for(int i:nums){     //O(N)
+            if(map.containsKey(i)) 
+          {  int upd= map.get(i)+1;
+            map.put(i,upd); }
+            else map.put(i,1);
+        }
+        System.out.println(map);
+        
+        int index=0;
+        for(int key:map.keySet()){
+            if(key==val)
+            continue;
+            for(int f=0;f<map.get(key);f++)
+                nums[index++]=key; 
+            
+        }
+        if(map.get(val)!=null)
+        return nums.length-map.get(val);
+        else return nums.length;
+*/
+ /*  IN Place. Using 2 pointer method. O(1) Space, O(n) time */
+int current=0; int dupcount=0;
+// 
+for(int i=0;i<nums.length;i++){
+if(nums[i]==val) { dupcount++;
+continue;
+}
+else
+nums[current++]=nums[i];
+}
+return nums.length-dupcount;
+
+    }
+}
