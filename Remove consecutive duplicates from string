@@ -1,0 +1,57 @@
+class Solution {
+    public int removeDuplicates(int[] nums) {
+
+/* Using another array & using 2 pointers Solution. O(N) time & Space
+        int[] newarr = new int[nums.length];
+        int newpointer=0;
+        for(int i=0;i<nums.length;i++){
+            if(i==nums.length-1)
+            { newarr[newpointer++]=nums[i];
+            break; }
+            if(nums[i]==nums[i+1])
+            continue; 
+            newarr[newpointer++]=nums[i];
+        }
+        for(int p=0;p<newpointer;p++)
+        nums[p]=newarr[p];
+
+        return newpointer;
+        */
+
+/* Set Solution O(N) time & Space
+        LinkedHashSet<Integer> set=new LinkedHashSet<>();
+        for(int i=0;i<nums.length;i++)
+            set.add(nums[i]);
+        
+         int index=0;
+         for(int p:set)
+         nums[index++]=p;
+         return set.size();
+         */
+
+/* HashMap Solution O(N) time & Space
+LinkedHashMap<Integer,Integer> map= new LinkedHashMap<>();
+ for(int i=0;i<nums.length;i++) 
+    map.put(nums[i],0); 
+ int index=0;
+ for(int p: map.keySet())     
+    nums[index++]=p;
+ return map.size();
+
+ */
+
+/* Best solution: In-place array solution (O(1) space complexity & O(N) time) using two pointer technique */
+ int current=0; int dupc=0;
+        for(int i=0;i<nums.length;i++){
+            if(i==nums.length-1)
+          {  nums[current++]= nums[i]; break; }
+            if(nums[i]==nums[i+1])
+           { dupc++;
+            continue; }
+            else 
+            nums[current++]=nums[i];
+        }
+        return nums.length-dupc;
+
+    }
+}
