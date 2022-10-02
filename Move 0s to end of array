@@ -1,0 +1,22 @@
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int nonZeroIndex = 0; int zeroCount=0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==0){
+                zeroCount++;
+                continue;
+            }
+            else{
+                nums[nonZeroIndex++] = nums[i];
+            }
+    }
+    int end=nums.length-1;
+    while(zeroCount>0){
+        nums[end--] =0;
+        zeroCount--;
+    }
+    for(int i:nums)
+    System.out.print(i + " ");
+
+    }
+}
