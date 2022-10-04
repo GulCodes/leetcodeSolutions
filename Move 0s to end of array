@@ -1,5 +1,7 @@
 class Solution {
     public void moveZeroes(int[] nums) {
+
+    /* In place but took 2 scans of Array
         int nonZeroIndex = 0; int zeroCount=0;
         for(int i=0;i<nums.length;i++){
             if(nums[i]==0){
@@ -17,6 +19,18 @@ class Solution {
     }
     for(int i:nums)
     System.out.print(i + " ");
+ */
+ 
+ /* optimized way: in place and only 1 scan */
+ int curr=0;
+for(int i=0;i<nums.length;i++){
+            if(nums[i]==0) continue;
+            else{
+                int temp=nums[i];
+                nums[i]=nums[curr];
+                nums[curr]=temp;    
+                curr++;        }
+            }
 
     }
 }
