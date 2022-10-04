@@ -1,6 +1,7 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        //n2+nlogn= O(n2) and a set used
+        /* n2+nlogn= O(n2) and a set used to get distinct triplets
+        
         List<List<Integer>> finalList = new ArrayList<List<Integer>>();
         Set<List<Integer>> finalSet = new HashSet<List<Integer>>();
         Arrays.sort(nums);
@@ -24,5 +25,30 @@ class Solution {
     System.out.println(finalSet);
     return new ArrayList(finalSet);
 
+*/
+
+/* no set used here for getting distinct triplets. logic used. */
+
+Arrays.sort(nums);
+List<List<Integer>> tripletList = new ArrayList<List<Integer>>();
+for(int i=0;i<=nums.length-3;i++){
+    if(nums[i]>0) break;
+    int target= -nums[i], end= nums.length-1, beg=i+1;
+    if(i>0 && nums[i]==nums[i-1]) continue;
+
+    while(beg<end){
+        if(end<nums.length-1&&nums[end]==nums[end+1]) end--;  
+
+        else 
+        {if(nums[beg]+nums[end]==target){
+            tripletList.add(Arrays.asList(nums[i],nums[beg],nums[end]));
+            beg++; end--; 
+        }
+        else if(nums[beg]+nums[end]<target)
+        beg++;
+        else end--; }
     }
 }
+return tripletList;
+    
+}}
