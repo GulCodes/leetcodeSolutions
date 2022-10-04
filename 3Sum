@@ -1,0 +1,28 @@
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        //n2+nlogn= O(n2) and a set used
+        List<List<Integer>> finalList = new ArrayList<List<Integer>>();
+        Set<List<Integer>> finalSet = new HashSet<List<Integer>>();
+        Arrays.sort(nums);
+        for(int i=0;i<=nums.length-3;i++){
+         int j= nums.length-1; int beg= i+1;
+      while(beg<j){
+          int target= -nums[i];
+          if(nums[beg]+nums[j]==target){ 
+              List<Integer> ol =Arrays.asList(nums[beg],nums[i],nums[j]);
+              Collections.sort(ol);
+              finalSet.add(ol);
+           beg++;
+           j--; 
+           }
+          else if(nums[beg]+nums[j]<target)
+           beg++;
+          else j--; 
+      }
+    }
+
+    System.out.println(finalSet);
+    return new ArrayList(finalSet);
+
+    }
+}
