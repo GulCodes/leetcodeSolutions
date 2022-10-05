@@ -1,1 +1,52 @@
+class Solution {
+    public void sortColors(int[] nums) {
+        /* below using 2 scans. 
+        int count0=0;
+        int count1=0;
+        int count2=0;
+        
+
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==0) count0++;
+            else if(nums[i]==1) count1++;
+            else count2++;
+        }
+        int curr=0;
+        while(count0!=0)
+       { nums[curr++]=0; count0--;}
+        while(count1!=0)
+    {    nums[curr++]=1; count1--; }
+        while(count2!=0)
+       { nums[curr++]=2; count2--;}
+ */
+/* Below using 1-scan only. This below algo is the Dutch National Flag Algorithm */
+int low=0, high=nums.length-1, i=0;
+
+while(i<=high) {
+if(nums[i]==0)
+{
+    swap(nums,i,low); 
+    low++; i++;
+}
+else if(nums[i]==2) {
+swap(nums,i,high);
+high--; }
+else
+i++;
+}
+}
+
+public void swap(int[] arr,int a,int b){
+        int temp=arr[a];
+        arr[a]=arr[b];
+        arr[b]=temp;
+}
+}
+
+
+
+
+
+
+
 
