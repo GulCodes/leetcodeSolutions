@@ -1,0 +1,36 @@
+class Solution {
+    public int missingNumber(int[] nums) {
+        /* O(n2) Time: Brute force 
+        for(int i=0;i<=nums.length;i++){
+            boolean found=false;
+            for(int j=0;j<nums.length;j++)
+                if(i==nums[j]) found=true;
+            if(!found)
+            return i;
+        }
+        
+        return -1;
+*/
+
+/* O(nlogn) time and constant space 
+
+Arrays.sort(nums);
+int i;
+ for( i=0;i<=nums.length-2;i++){
+     if(nums[i]+1!=nums[i+1])
+     return nums[i]+1;
+ }
+ if(nums[0]==0)
+return nums[i]+1;
+else return 0;
+
+*/
+/*Best: O(1) space complexity and O(n) time complexity. (Using First N Natural Numbers Sum formula) */
+int SumNaturalNos = nums.length*(nums.length+1)/2;
+int SumActual=0;
+for(int i:nums)
+SumActual+=i;
+return SumNaturalNos-SumActual;
+
+    }
+}
