@@ -1,0 +1,33 @@
+class Solution {
+    public int findDuplicate(int[] nums) {
+   /* Below is easy solution in O(Nlogn) time and no space but can not use this because its mentioned we cant modify the array.
+
+        Arrays.sort(nums);
+        for(int i=0;i<nums.length-1;i++){
+            
+            if(nums[i]==nums[i+1])
+            return nums[i];
+        }
+        System.out.println(Arrays.toString(nums));
+        return -1; */
+
+        /* Below soln is O(N) time but O(N) space (frequency array) so definitely not recommended. 
+
+        int[] farr = new int[nums.length];
+         for(int i=0;i<nums.length;i++){
+           farr[nums[i]]++; 
+         }
+         System.out.println(Arrays.toString(farr));
+
+          for(int i=0;i<farr.length;i++){
+              if(farr[i]>1) return i;}
+          
+         
+return -1; */
+
+/* Below is the most optimized solution. O(1) space and O(N) time. */
+
+// LINKED LIST CYCLE METHOD
+
+    }
+}
