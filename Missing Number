@@ -25,12 +25,23 @@ return nums[i]+1;
 else return 0;
 
 */
-/*Best: O(1) space complexity and O(n) time complexity. (Using First N Natural Numbers Sum formula) */
+/*Best: O(1) space complexity and O(n) time complexity. (Using First N Natural Numbers Sum formula) 
 int SumNaturalNos = nums.length*(nums.length+1)/2;
 int SumActual=0;
 for(int i:nums)
 SumActual+=i;
 return SumNaturalNos-SumActual;
+*/
+
+/* Alternative Best Solution: O(1) space and O(n) Time complexity. (Using XOR) */
+int xord = 0;
+int origXor =0; 
+for(int j=1;j<=nums.length;j++)
+origXor = origXor ^ j;
+for(int i:nums)
+xord=xord ^ i;
+
+return xord ^ origXor;
 
     }
 }
