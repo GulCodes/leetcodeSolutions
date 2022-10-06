@@ -1,0 +1,32 @@
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        /* By using extra space O(N). (Frequency Array), O(N) time
+        List<Integer> fl= new ArrayList<>();
+        int[] fa = new int[nums.length+1];
+        for(int n:nums)
+        fa[n]++;
+        
+
+        for(int i=1;i<nums.length+1;i++){
+           if(fa[i]==0)
+           fl.add(i);
+        }
+        return fl;
+        */
+
+/* O(N) time and constant space by using Negation of Values in Array. */
+int maxl = nums.length;
+// Range of values: [1-maxl]. Range of array indices: [0-(maxl-1)]
+
+List<Integer> fl = new ArrayList<>();
+for(int i=0;i<maxl;i++){
+    int curr = Math.abs(nums[i]);
+    (nums[curr-1])=-1*Math.abs(nums[curr-1]);
+}
+for(int j=0;j<nums.length;j++){
+    if(nums[j]>0) fl.add(j+1);
+}
+return fl;
+
+    }
+}
