@@ -1,0 +1,52 @@
+class Solution {
+    public List<Integer> findDuplicates(int[] nums) {
+        /* with O(N) time and O(N) space (Frequency Array) 
+        int[] freqArr = new int[nums.length+1];
+        List<Integer> li= new ArrayList<>();
+        for(int num:nums){
+            freqArr[num]++;
+        }
+        System.out.println(Arrays.toString(freqArr));
+        for(int f=0;f<freqArr.length;f++){
+            if(freqArr[f]==2)
+            li.add(f);
+        }
+return li; */
+
+
+
+/* Constant space but O(NLOGN) time cause of Sorting.
+
+Arrays.sort(nums);
+List<Integer> li= new ArrayList<>();
+ for(int f=0;f<nums.length-1;f++){
+    if(nums[f]==nums[f+1])
+     li.add(nums[f]); } 
+     return li;
+*/
+
+/* with O(N) space and O(N) time (Set) 
+Set<Integer> set= new HashSet<>();
+List<Integer> li= new ArrayList<>();
+
+for(int i:nums) {
+if(set.add(i)==false)
+li.add(i); } 
+return li;   */
+
+/* With O(1) space and O(N) time (Most Optimized). Lets try using negation of array elements Idea */
+
+List<Integer> li= new ArrayList<>();
+
+for(int i=0;i<nums.length;i++){
+    int curr = Math.abs(nums[i]);
+    if(nums[curr-1]<0)
+    li.add(curr);
+    else 
+        nums[curr-1]*=-1;
+    
+}
+return li;
+
+    }
+}
