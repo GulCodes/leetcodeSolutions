@@ -1,0 +1,29 @@
+public class Solution {
+
+	public static String removeAllOccurrencesOfChar(String input, char ch) {
+	  /* O(N) recursively 
+      
+            if(input.length()==0) return "";
+            if(input.length()==1) {
+                if( input.charAt(0)==ch) return "";
+                else return input.charAt(0)+""; }
+            if(input.charAt(0) == ch)
+           return removeAllOccurrencesOfChar(input.substring(1),ch);
+            else
+            return input.charAt(0)+removeAllOccurrencesOfChar(input.substring(1),ch);
+        */
+        
+    //    O(N) time - iteratively
+        String fin="";
+        for(int i=0;i<input.length();i++){
+            if(input.charAt(i)!=c)
+                fin+=input.charAt(i);
+        }
+        return fin;
+        
+       
+        
+        
+        
+	}
+}
