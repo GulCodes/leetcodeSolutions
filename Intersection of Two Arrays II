@@ -1,1 +1,80 @@
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        
+          /*O(N2) solution along with O(N) space - Bad solution
+        
+        List<Integer> li = new ArrayList<>();
+		int m = nums1.length;
+        int n = nums2.length;
 
+        for(int i=0;i<m;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                if(nums1[i] == nums2[j]){
+                    nums2[j]=Integer.MIN_VALUE;
+                    li.add(nums1[i]);
+                    break;
+                }
+               continue;     
+            }
+        }
+int[] finalarr = new int[li.size()]; int index=0;   
+for(int liElement:li) 
+finalarr[index++]=liElement;
+return finalarr; 
+*/
+
+/* 1 HashMap and 1 List so O(N) space and O(N) time
+HashMap<Integer,Integer> map= new HashMap<>();  // frequency map for nums1
+List<Integer> li = new ArrayList<>();
+for(int i:nums1)
+{ 
+    if(map.containsKey(i)) 
+        map.put(i,map.get(i)+1);
+    else map.put(i,1);
+}
+for(int j:nums2){
+    if(map.containsKey(j)){ 
+        if(map.get(j)>0) {
+        li.add(j);
+        map.put(j,map.get(j)-1); }
+    }
+}
+int[] finalarr = new int[li.size()]; int index=0;   
+for(int liElement:li) 
+finalarr[index++]=liElement;
+return finalarr; 
+*/
+
+//using two pointers O(NLOGN) time and a list to hold so O(N) space
+
+Arrays.sort(nums1);
+Arrays.sort(nums2);
+List<Integer> li = new ArrayList<>();
+int i=0; int j=0;
+
+while(i<nums1.length&&j<nums2.length) {
+if(nums1[i]==nums2[j]){
+ li.add(nums1[i]);
+i++; j++;
+}
+else if(nums1[i]>nums2[j]) {
+    while(j<nums2.length-1 && nums2[j]==nums2[j+1])
+    j++;
+    j++;
+}
+else { 
+      while(i<nums1.length-1 && nums1[i]==nums1[i+1])
+    i++;
+    i++;
+}}
+
+int[] finalarr = new int[li.size()]; 
+int index=0;
+for(int liElement:li) 
+finalarr[index++]=liElement;
+
+return finalarr;
+    }
+}
