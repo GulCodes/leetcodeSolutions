@@ -1,0 +1,17 @@
+class Solution {
+    public int[] twoSum(int[] input, int x) {
+        //O(N) easy since already sorted. used 2 pointers from either side.
+        int count=0; 
+        int start=0; int end=input.length-1;
+         while(start<end) {
+             if(input[start]+input[end]==x)
+             {  return new int[]{start+1,end+1}; } 
+        	 else if(input[start]+input[end]<x)
+                 start++;
+             else end--;
+    }
+        return new int[2];
+    }
+}
+
+/* Notes: We used Two pointer approach here. Could have also used binary search. */
