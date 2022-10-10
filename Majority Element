@@ -1,0 +1,52 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+      /*O(N2)
+      int max= Integer.MIN_VALUE; int maxcountel=0;
+for(int i=0;i<nums.length;i++){
+    int count=0;
+    for(int j=i+1;j<nums.length;j++){
+        if(nums[i]==nums[j])
+        count++;
+    }
+    if(count>max) {
+    max=count; maxcountel=nums[i]; 
+}}
+System.out.println(maxcountel+ " and n/2 is:" + nums.length/2);
+return maxcountel; 
+*/
+
+/* O(NLOGN) time 
+    if(nums.length==1) return nums[0];
+    Arrays.sort(nums);
+    int majElement=0,count=1,maxcount=Integer.MIN_VALUE,maxcountel=0;
+    for(int i=0;i<nums.length-1;i++){
+        if(nums[i]==nums[i+1])
+        {count++; 
+        if(count>maxcount){
+        maxcount= count; 
+        maxcountel = nums[i];}}
+        else count=1;
+    }
+    return maxcountel;
+
+*/
+/* Hash Map O(n) space and O(n) time. 
+HashMap<Integer,Integer> map = new HashMap<>();
+for(int i:nums)
+{
+    if(map.containsKey(i))
+    map.put(i,map.get(i)+1);
+    else map.put(i,1);
+}
+System.out.println(map);
+for(Integer key:map.keySet())
+{ if(map.get(key)>nums.length/2)
+return key;}
+return -1;
+*/
+
+/* O(1) space and O(n) time - most optimized solution below: MOORE'S VOTING ALGORITHM' */
+
+
+
+}}
