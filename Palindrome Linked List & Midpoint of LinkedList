@@ -1,0 +1,87 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+// Follow up: Could you do it in O(n) time and O(1) space? 
+
+class Solution {
+    public boolean isPalindrome(ListNode head) 
+    {
+        /* Recursive Soln, O(N) and O(N)
+
+        if(head==null || head.next ==null)
+        return true;
+        ListNode last = head;
+        while(last.next!=null) last=last.next;
+        if(head.val!=last.val) return false;
+        else
+        {
+            ListNode beforeLast = head;
+            while(beforeLast.next.next!=null) beforeLast=beforeLast.next;
+            beforeLast.next=null;
+            return isPalindrome(head.next);
+        }
+        */
+
+        /* Iterative Solution - This is O(n2). 
+
+     if(head==null || head.next==null) return true;
+ 
+     while(head!=null && head.next!=null)
+     {   
+
+         ListNode last;
+         ListNode lastbutone = head;
+        while(lastbutone.next.next!=null) 
+        lastbutone=lastbutone.next;
+        last=lastbutone.next;
+    
+        if(head.val!=last.val) return false;
+        else
+       {  
+           lastbutone.next=null; head=head.next; }
+    }
+    return true; 
+
+*/ 
+/* Using Extra space O(N) and time O(N) - new LinkedList/Array */
+
+/* Best, most optimized: O(N) time and O(1) Space. */
+
+//first find midpoint of the linkedlist 
+       
+        if(head==null || head.next==null) return true;
+        ListNode fast=head,slow=head;
+        while(fast!=null && fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+        }
+        ListNode rhalf = reverse(slow);
+        while(rhalf!=null){
+            if(head.val!=rhalf.val) return false;
+            head=head.next; rhalf=rhalf.next;
+        }
+        return true;
+        
+	}
+    
+    static ListNode reverse(ListNode head){
+        ListNode prev = null; 
+        ListNode curr= head;
+        ListNode nextn = null;
+
+        while(curr!=null){
+            nextn = curr.next;
+            curr.next = prev;
+            prev=curr;
+            curr= nextn;
+        }
+        return prev;
+    }
+ }
