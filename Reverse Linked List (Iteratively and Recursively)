@@ -14,7 +14,7 @@
 class Solution {
     public ListNode reverseList(ListNode head) {
       
-/* Recursively (This has O(N) time and O(N) space.)
+/* Recursively (This has O(N2) time and O(N) space.)
 
         if(head==null || head.next==null) return head; // Base case
         ListNode reversedListHead = reverseList(head.next);
@@ -24,8 +24,20 @@ class Solution {
         reversedListHead.next=head;
         head.next=null;
         return reversedListHead2; 
+        
 */    
-/* Iteratively (This is better since only O(N) time. )
+/* Recursively 2 - space O(N) and time will be O(N)
+
+   if(head==null || head.next==null) return head;
+        
+        LinkedListNode<Integer> last = head.next;
+        LinkedListNode<Integer> newhead = reverseLinkedListRec(head.next);
+        last.next=head; head.next=null;
+        return newhead;
+        
+        */
+        
+/* Iteratively (This is best since only O(N) time n constant space complexity. )
 
     if(head==null || head.next==null ) return head;
     ListNode curr = head;
