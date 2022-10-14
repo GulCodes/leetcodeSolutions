@@ -1,0 +1,41 @@
+class Solution {
+    public void rotate(int[] nums, int k) {
+        /* Using another Array
+
+        if(nums.length==1) return;
+        if(k>nums.length) {
+            k=k%nums.length;
+        }
+        int[] arr2 = new int[nums.length];
+        for(int i=0;i<nums.length-k;i++)
+            arr2[k+i]=nums[i];
+        
+        for(int i=0;i<k;i++)
+         arr2[i]= nums[nums.length-k+i];    
+         
+    System.out.println(Arrays.toString(arr2));
+    int index=0;
+       for(int i:arr2){
+           nums[index++]=i;
+       }
+       */
+
+       /* In- place. Using Reverse. */
+       if(nums.length==1) return;
+       if(k>nums.length) k=k%nums.length;
+       ReverseArr(nums,0,nums.length-1); // reverse whole array 
+       ReverseArr(nums,0,k-1);
+       ReverseArr(nums,k,nums.length-1);
+    } 
+    public void ReverseArr (int[] arr, int i,int j){
+      while(i<j)
+     { 
+         int temp =arr[i];
+         arr[i]= arr[j];
+         arr[j]=temp;
+         i++; 
+         j--;
+     }
+
+    }
+}
