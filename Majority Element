@@ -46,7 +46,21 @@ return -1;
 */
 
 /* O(1) space and O(n) time - most optimized solution below: MOORE'S VOTING ALGORITHM' */
-
-
+int maxindex=0;
+int maxfrequency=1;
+for(int i=1;i<nums.length;i++){
+    if(nums[i]==nums[maxindex]){
+        maxfrequency++;
+    }
+    else {
+        maxfrequency--;
+        if(maxfrequency==0){
+maxindex= i; 
+maxfrequency=1;
+        }
+    }
+    
+}
+return nums[maxindex];
 
 }}
