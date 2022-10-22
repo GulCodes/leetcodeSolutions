@@ -1,0 +1,50 @@
+import java.util.*;
+class Solution {
+    public boolean uniqueOccurrences(int[] arr) {
+        //Brute force would be O(n2) time and O(N) space.
+       
+        // O(N) time and O(N) space ( Using a hashmap and a set)using map
+        
+        HashMap<Integer,Integer> map= new HashMap<>();
+        for(int a:arr){
+            if(map.containsKey(a))
+            map.put(a,map.get(a)+1);
+            else
+            map.put(a,1);
+        }
+        
+        Collection<Integer> mapvalcollec =  map.values();
+        Set<Integer> uniqmapvalues = new HashSet<>(mapvalcollec);
+        System.out.println(uniqmapvalues);
+        if(uniqmapvalues.size()==map.values().size()) return true;
+        return false; 
+       
+
+      /* Using sorting. O(Nlogn) time. Using a list and a set. Not a great solution, unneccesarily confusing.
+
+       Arrays.sort(arr); int c=1; 
+       List<Integer> freqlist = new ArrayList<>(); 
+       for(int i=0;i<arr.length;i++){
+           if(i==arr.length-1){
+               if(arr[i]==arr[i-1]) break;
+               freqlist.add(1); break;
+           }
+           if(arr[i]==arr[i+1]) c++;
+           else {
+               freqlist.add(c); // 1 2
+               c=1;
+           }
+       }
+        
+        Set<Integer> uniqvalues = new HashSet<>(freqlist);
+          System.out.println(freqlist);
+          System.out.println(uniqvalues);
+
+        if(freqlist.size()==uniqvalues.size()) return true; 
+        return false;
+      */
+
+    } 
+    
+
+}
